@@ -124,7 +124,7 @@ function App() {
           randomPassword();
         }}
       >
-        Click
+        Generate
       </button>
     </>
   );
