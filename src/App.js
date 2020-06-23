@@ -56,6 +56,14 @@ function App() {
           />
         </li>
       </ul>
+      <button
+        onClick={() => {
+          console.log(`click`);
+          console.table(conditionals);
+        }}
+      >
+        Click
+      </button>
     </>
   );
 }
