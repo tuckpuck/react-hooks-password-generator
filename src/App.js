@@ -18,30 +18,44 @@ function App() {
     <>
       Password Generator
       <br />
-      Special Characters
-      <input
-        type="checkbox"
-        onChange={(e) => {
-          setConditionals({
-            ...conditionals,
-            specialChar: !conditionals.specialChar,
-          });
-        }}
-      />
-      Letters
-      <input
-        type="checkbox"
-        onChange={(e) => {
-          setConditionals({ ...conditionals, letters: !conditionals.letters });
-        }}
-      />
-      Numbers
-      <input
-        type="checkbox"
-        onChange={(e) => {
-          setConditionals({ ...conditionals, numbers: !conditionals.numbers });
-        }}
-      />
+      <ul>
+        <li>
+          Special Characters
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              setConditionals({
+                ...conditionals,
+                specialChar: !conditionals.specialChar,
+              });
+            }}
+          />
+        </li>
+        <li>
+          Letters
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              setConditionals({
+                ...conditionals,
+                letters: !conditionals.letters,
+              });
+            }}
+          />
+        </li>
+        <li>
+          Numbers
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              setConditionals({
+                ...conditionals,
+                numbers: !conditionals.numbers,
+              });
+            }}
+          />
+        </li>
+      </ul>
     </>
   );
 }
