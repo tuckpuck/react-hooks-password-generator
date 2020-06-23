@@ -9,6 +9,7 @@ function App() {
     numbers: true,
     length: 30,
   });
+  const [password, setPassword] = useState("");
 
   const randomPassword = () => {
     let characters = "";
@@ -43,6 +44,7 @@ function App() {
       password += characterList[getRandomInt(0, characterList.length - 1)];
     }
     console.log(password);
+    setPassword(password);
     return password;
   };
 
@@ -55,52 +57,52 @@ function App() {
           Special Characters
           <input
             type="checkbox"
-            checked
             onChange={(e) => {
               setConditionals({
                 ...conditionals,
                 specialChar: !conditionals.specialChar,
               });
             }}
+            checked={conditionals.specialChar}
           />
         </li>
         <li>
           Upper case letters
           <input
             type="checkbox"
-            checked
             onChange={(e) => {
               setConditionals({
                 ...conditionals,
                 upperLetters: !conditionals.upperLetters,
               });
             }}
+            checked={conditionals.upperLetters}
           />
         </li>
         <li>
           Lower case letters
           <input
             type="checkbox"
-            checked
             onChange={(e) => {
               setConditionals({
                 ...conditionals,
                 lowerLetters: !conditionals.lowerLetters,
               });
             }}
+            checked={conditionals.lowerLetters}
           />
         </li>
         <li>
           Numbers
           <input
             type="checkbox"
-            checked
             onChange={(e) => {
               setConditionals({
                 ...conditionals,
                 numbers: !conditionals.numbers,
               });
             }}
+            checked={conditionals.numbers}
           />
         </li>
         <li>
@@ -126,6 +128,7 @@ function App() {
       >
         Generate
       </button>
+      {password && <p>Password: {password}</p>}
     </>
   );
 }
