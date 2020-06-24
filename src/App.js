@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -10,6 +10,8 @@ function App() {
     length: 30,
   });
   const [password, setPassword] = useState("");
+
+  useEffect(() => randomPassword(), []);
 
   const randomPassword = () => {
     let characters = "";
@@ -31,10 +33,6 @@ function App() {
       characters += "!@$%^&*()<>,.?/[]{}-=_+";
     }
 
-    function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
     let characterList = characters;
     var password = "";
     if (characterList.length <= 0) {
@@ -47,6 +45,10 @@ function App() {
     setPassword(password);
     return password;
   };
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   return (
     <>
@@ -62,6 +64,7 @@ function App() {
                 ...conditionals,
                 specialChar: !conditionals.specialChar,
               });
+              randomPassword();
             }}
             checked={conditionals.specialChar}
           />
@@ -75,6 +78,7 @@ function App() {
                 ...conditionals,
                 upperLetters: !conditionals.upperLetters,
               });
+              randomPassword();
             }}
             checked={conditionals.upperLetters}
           />
@@ -88,6 +92,7 @@ function App() {
                 ...conditionals,
                 lowerLetters: !conditionals.lowerLetters,
               });
+              randomPassword();
             }}
             checked={conditionals.lowerLetters}
           />
@@ -101,6 +106,7 @@ function App() {
                 ...conditionals,
                 numbers: !conditionals.numbers,
               });
+              randomPassword();
             }}
             checked={conditionals.numbers}
           />
@@ -108,7 +114,8 @@ function App() {
         <li>
           Length
           <input
-            type="number"
+            type="range"
+            className="range-slider"
             min="8"
             max="50"
             value={conditionals.length}
@@ -117,8 +124,10 @@ function App() {
                 ...conditionals,
                 length: e.target.value,
               });
+              randomPassword();
             }}
           />
+          <span class="range-slider-value">{conditionals.length}</span>
         </li>
       </ul>
       <button
