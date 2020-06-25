@@ -36,7 +36,7 @@ function App() {
     }
 
     if (conditionals.specialChar) {
-      characters += "!@$%^&*()<>,.?/[]{}-=_+";
+      characters += "!@$%^&*()<div>,.?/[]{}-=_+";
     }
 
     let characterList = characters;
@@ -53,7 +53,41 @@ function App() {
   }
 
   return (
-    <div className="container password__outer bg-blue-300">
+    <div className="flex justify-center h-screen">
+      <div className="rounded overflow-hidden shadow-lg w-full md:w-10/12 lg:w-8/12 m-auto">
+        <img
+          className="w-full"
+          src="/img/card-top.jpg"
+          alt="Sunset in the mountains"
+        />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+          <p className="text-gray-700 text-base">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Voluptatibus quia, nulla! Maiores et perferendis eaque,
+            exercitationem praesentium nihil.
+          </p>
+        </div>
+        <div className="px-6 py-4">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            #photography
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            #travel
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+            #winter
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+{
+  /* <div>
       Password Generator
       <br />
       <ul>
@@ -142,8 +176,5 @@ function App() {
           conditionals.numbers) &&
           password && <span>{password}</span>}
       </p>
-    </div>
-  );
+    </div> */
 }
-
-export default App;
