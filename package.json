@@ -12,12 +12,12 @@
     "tailwindcss": "^1.4.6"
   },
   "scripts": {
-    "start": "npm run watch:css & react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "start": "react-scripts start && npm run watch:css",
+    "build": "react-scripts build && npm run build:css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css":"postcss src/styles/tailwind.css -o scr/styles/App.css",
-    "watch:css":"postcss src/styles/tailwind.css -o scr/styles/App.css -w"
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/App.css",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/App.css"
   },
   "eslintConfig": {
     "extends": "react-app"
