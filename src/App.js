@@ -11,6 +11,12 @@ function App() {
   });
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    console.log(
+      `specialChar:${conditionals.specialChar}, lowerLetters:${conditionals.lowerLetters},upperLetters:${conditionals.upperLetters}, numbers:${conditionals.numbers}`
+    );
+  }, [conditionals]);
+
   useEffect(() => randomPassword(), []);
 
   const randomPassword = () => {
@@ -36,13 +42,12 @@ function App() {
     let characterList = characters;
     var password = "";
     if (characterList.length <= 0) {
-      return "Select some options to continue";
+      return undefined;
     }
     for (let i = 0; i < length; ++i) {
       password += characterList[getRandomInt(0, characterList.length - 1)];
     }
     setPassword(password);
-    return password;
   };
 
   function getRandomInt(min, max) {
@@ -58,6 +63,7 @@ function App() {
           Special Characters
           <input
             type="checkbox"
+            checked={conditionals.specialChar}
             onChange={(e) => {
               setConditionals({
                 ...conditionals,
@@ -65,13 +71,13 @@ function App() {
               });
               randomPassword();
             }}
-            checked={conditionals.specialChar}
           />
         </li>
         <li>
           Upper case letters
           <input
             type="checkbox"
+            checked={conditionals.upperLetters}
             onChange={(e) => {
               setConditionals({
                 ...conditionals,
@@ -79,13 +85,13 @@ function App() {
               });
               randomPassword();
             }}
-            checked={conditionals.upperLetters}
           />
         </li>
         <li>
           Lower case letters
           <input
             type="checkbox"
+            checked={conditionals.lowerLetters}
             onChange={(e) => {
               setConditionals({
                 ...conditionals,
@@ -93,13 +99,13 @@ function App() {
               });
               randomPassword();
             }}
-            checked={conditionals.lowerLetters}
           />
         </li>
         <li>
           Numbers
           <input
             type="checkbox"
+            checked={conditionals.numbers}
             onChange={(e) => {
               setConditionals({
                 ...conditionals,
@@ -107,7 +113,6 @@ function App() {
               });
               randomPassword();
             }}
-            checked={conditionals.numbers}
           />
         </li>
         <li>
@@ -126,7 +131,7 @@ function App() {
               randomPassword();
             }}
           />
-          <span class="range-slider-value">{conditionals.length}</span>
+          <span className="range-slider-value">{conditionals.length}</span>
         </li>
       </ul>
       <button
@@ -136,7 +141,14 @@ function App() {
       >
         Generate
       </button>
-      {password && <p>Password: {password}</p>}
+      <p>
+        Password:
+        {(conditionals.specialChar ||
+          conditionals.lowerLetters ||
+          conditionals.upperLetters ||
+          conditionals.numbers) &&
+          password && <span>{password}</span>}
+      </p>
     </>
   );
 }
