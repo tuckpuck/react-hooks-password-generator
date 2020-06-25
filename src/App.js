@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./styles/App.css";
 
 function App() {
   const [conditionals, setConditionals] = useState({
@@ -17,7 +17,7 @@ function App() {
     );
   }, [conditionals]);
 
-  useEffect(() => randomPassword(), []);
+  useEffect(() => randomPassword(), [conditionals]);
 
   const randomPassword = () => {
     let characters = "";
@@ -40,10 +40,8 @@ function App() {
     }
 
     let characterList = characters;
-    var password = "";
-    if (characterList.length <= 0) {
-      return undefined;
-    }
+    console.log(characterList);
+    let password = "";
     for (let i = 0; i < length; ++i) {
       password += characterList[getRandomInt(0, characterList.length - 1)];
     }
@@ -69,7 +67,6 @@ function App() {
                 ...conditionals,
                 specialChar: !conditionals.specialChar,
               });
-              randomPassword();
             }}
           />
         </li>
@@ -83,7 +80,6 @@ function App() {
                 ...conditionals,
                 upperLetters: !conditionals.upperLetters,
               });
-              randomPassword();
             }}
           />
         </li>
@@ -97,7 +93,6 @@ function App() {
                 ...conditionals,
                 lowerLetters: !conditionals.lowerLetters,
               });
-              randomPassword();
             }}
           />
         </li>
@@ -111,7 +106,6 @@ function App() {
                 ...conditionals,
                 numbers: !conditionals.numbers,
               });
-              randomPassword();
             }}
           />
         </li>
@@ -128,7 +122,6 @@ function App() {
                 ...conditionals,
                 length: e.target.value,
               });
-              randomPassword();
             }}
           />
           <span className="range-slider-value">{conditionals.length}</span>
