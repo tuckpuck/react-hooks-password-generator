@@ -56,28 +56,107 @@ function App() {
     <div className="flex justify-center h-screen">
       <div className="rounded overflow-hidden shadow-lg w-full md:w-10/12 lg:w-8/12 m-auto">
         <img
-          className="w-full"
-          src="/img/card-top.jpg"
-          alt="Sunset in the mountains"
+          className="w-full h-48 object-cover object-center"
+          src={require("./img/lock.jpg")}
+          alt="Security lock"
         />
-        <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-          <p className="text-gray-700 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil.
-          </p>
+        <div className="w-full px-8 pt-8">
+          <h2 className="font-bold text-2xl mb-2">Password Generator</h2>
         </div>
-        <div className="px-6 py-4">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-            #photography
-          </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-            #travel
-          </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
-            #winter
-          </span>
+        <div className="flex">
+          <div className="w-full md:w-1/2 px-8 pt-4 pb-8">
+            <ul>
+              <li>
+                Special Characters
+                <input
+                  type="checkbox"
+                  checked={conditionals.specialChar}
+                  onChange={(e) => {
+                    setConditionals({
+                      ...conditionals,
+                      specialChar: !conditionals.specialChar,
+                    });
+                  }}
+                />
+              </li>
+              <li>
+                Upper case letters
+                <input
+                  type="checkbox"
+                  checked={conditionals.upperLetters}
+                  onChange={(e) => {
+                    setConditionals({
+                      ...conditionals,
+                      upperLetters: !conditionals.upperLetters,
+                    });
+                  }}
+                />
+              </li>
+              <li>
+                Lower case letters
+                <input
+                  type="checkbox"
+                  checked={conditionals.lowerLetters}
+                  onChange={(e) => {
+                    setConditionals({
+                      ...conditionals,
+                      lowerLetters: !conditionals.lowerLetters,
+                    });
+                  }}
+                />
+              </li>
+              <li>
+                Numbers
+                <input
+                  type="checkbox"
+                  checked={conditionals.numbers}
+                  onChange={(e) => {
+                    setConditionals({
+                      ...conditionals,
+                      numbers: !conditionals.numbers,
+                    });
+                  }}
+                />
+              </li>
+              <li>
+                Length
+                <input
+                  type="range"
+                  className="range-slider"
+                  min="8"
+                  max="50"
+                  value={conditionals.length}
+                  onChange={(e) => {
+                    setConditionals({
+                      ...conditionals,
+                      length: e.target.value,
+                    });
+                  }}
+                />
+                <span className="range-slider-value">
+                  {conditionals.length}
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div className="w-full md:w-1/2 px-8 pt-4 pb-8">
+            <p>
+              {(conditionals.specialChar ||
+                conditionals.lowerLetters ||
+                conditionals.upperLetters ||
+                conditionals.numbers) &&
+                password && <span>{password}</span>}
+            </p>
+            <br />
+            <button
+              className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+              onClick={() => {
+                randomPassword();
+              }}
+            >
+              Generate
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -85,96 +164,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <div>
-      Password Generator
-      <br />
-      <ul>
-        <li>
-          Special Characters
-          <input
-            type="checkbox"
-            checked={conditionals.specialChar}
-            onChange={(e) => {
-              setConditionals({
-                ...conditionals,
-                specialChar: !conditionals.specialChar,
-              });
-            }}
-          />
-        </li>
-        <li>
-          Upper case letters
-          <input
-            type="checkbox"
-            checked={conditionals.upperLetters}
-            onChange={(e) => {
-              setConditionals({
-                ...conditionals,
-                upperLetters: !conditionals.upperLetters,
-              });
-            }}
-          />
-        </li>
-        <li>
-          Lower case letters
-          <input
-            type="checkbox"
-            checked={conditionals.lowerLetters}
-            onChange={(e) => {
-              setConditionals({
-                ...conditionals,
-                lowerLetters: !conditionals.lowerLetters,
-              });
-            }}
-          />
-        </li>
-        <li>
-          Numbers
-          <input
-            type="checkbox"
-            checked={conditionals.numbers}
-            onChange={(e) => {
-              setConditionals({
-                ...conditionals,
-                numbers: !conditionals.numbers,
-              });
-            }}
-          />
-        </li>
-        <li>
-          Length
-          <input
-            type="range"
-            className="range-slider"
-            min="8"
-            max="50"
-            value={conditionals.length}
-            onChange={(e) => {
-              setConditionals({
-                ...conditionals,
-                length: e.target.value,
-              });
-            }}
-          />
-          <span className="range-slider-value">{conditionals.length}</span>
-        </li>
-      </ul>
-      <button
-        onClick={() => {
-          randomPassword();
-        }}
-      >
-        Generate
-      </button>
-      <p>
-        Password:
-        {(conditionals.specialChar ||
-          conditionals.lowerLetters ||
-          conditionals.upperLetters ||
-          conditionals.numbers) &&
-          password && <span>{password}</span>}
-      </p>
-    </div> */
-}
