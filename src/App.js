@@ -61,16 +61,25 @@ function App() {
           alt="Security lock"
         />
         <div className="w-full px-8 pt-8">
-          <h2 className="font-bold text-2xl mb-2">Password Generator</h2>
+          <h2 className="text-3xl mb-2">Password Generator</h2>
+        </div>
+        <div className="w-11/12 py-4 text-center border border-4 border-gray-400 text-2xl my-2 mx-auto">
+          <p className="vertical-middle">
+            {(conditionals.specialChar ||
+              conditionals.lowerLetters ||
+              conditionals.upperLetters ||
+              conditionals.numbers) &&
+              password && <span>{password}</span>}
+          </p>
         </div>
         <div className="flex">
           <div className="w-full md:w-1/2 px-8 pt-4 pb-8">
             <ul>
               <li>
-                Special Characters
                 <input
                   type="checkbox"
                   checked={conditionals.specialChar}
+                  className="form-checkbox h-6 w-6"
                   onChange={(e) => {
                     setConditionals({
                       ...conditionals,
@@ -78,12 +87,15 @@ function App() {
                     });
                   }}
                 />
+                <span className="align-top text-xl">
+                  &nbsp;&nbsp;Special Characters
+                </span>
               </li>
               <li>
-                Upper case letters
                 <input
                   type="checkbox"
                   checked={conditionals.upperLetters}
+                  className="form-checkbox h-6 w-6"
                   onChange={(e) => {
                     setConditionals({
                       ...conditionals,
@@ -91,12 +103,15 @@ function App() {
                     });
                   }}
                 />
+                <span className="align-top text-xl">
+                  &nbsp;&nbsp;Upper case letters
+                </span>
               </li>
               <li>
-                Lower case letters
                 <input
                   type="checkbox"
                   checked={conditionals.lowerLetters}
+                  className="form-checkbox h-6 w-6"
                   onChange={(e) => {
                     setConditionals({
                       ...conditionals,
@@ -104,12 +119,15 @@ function App() {
                     });
                   }}
                 />
+                <span className="align-top text-xl">
+                  &nbsp;&nbsp;Lower case letters
+                </span>
               </li>
               <li>
-                Numbers
                 <input
                   type="checkbox"
                   checked={conditionals.numbers}
+                  className="form-checkbox h-6 w-6"
                   onChange={(e) => {
                     setConditionals({
                       ...conditionals,
@@ -117,36 +135,27 @@ function App() {
                     });
                   }}
                 />
-              </li>
-              <li>
-                Length
-                <input
-                  type="range"
-                  className="range-slider"
-                  min="8"
-                  max="50"
-                  value={conditionals.length}
-                  onChange={(e) => {
-                    setConditionals({
-                      ...conditionals,
-                      length: e.target.value,
-                    });
-                  }}
-                />
-                <span className="range-slider-value">
-                  {conditionals.length}
-                </span>
+                <span className="align-top text-xl">&nbsp;&nbsp;Numbers</span>
               </li>
             </ul>
           </div>
           <div className="w-full md:w-1/2 px-8 pt-4 pb-8">
-            <p>
-              {(conditionals.specialChar ||
-                conditionals.lowerLetters ||
-                conditionals.upperLetters ||
-                conditionals.numbers) &&
-                password && <span>{password}</span>}
-            </p>
+            <span className="align-top text-xl">Length</span>
+            <br />
+            <input
+              type="range"
+              className="range-slider w-full"
+              min="8"
+              max="50"
+              value={conditionals.length}
+              onChange={(e) => {
+                setConditionals({
+                  ...conditionals,
+                  length: e.target.value,
+                });
+              }}
+            />
+            <span className="range-slider-value">{conditionals.length}</span>
             <br />
             <button
               className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
