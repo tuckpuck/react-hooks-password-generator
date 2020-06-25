@@ -41,7 +41,6 @@ function App() {
     for (let i = 0; i < length; ++i) {
       password += characterList[getRandomInt(0, characterList.length - 1)];
     }
-    console.log(password);
     setPassword(password);
     return password;
   };
