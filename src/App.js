@@ -53,7 +53,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="container password__outer bg-blue-300">
       Password Generator
       <br />
       <ul>
@@ -142,7 +142,7 @@ function App() {
           conditionals.numbers) &&
           password && <span>{password}</span>}
       </p>
-    </>
+    </div>
   );
 }
 
