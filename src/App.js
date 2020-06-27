@@ -54,16 +54,12 @@ function App() {
 
   return (
     <div className="flex justify-center h-screen">
-      <div className="rounded overflow-hidden shadow-lg w-full md:w-10/12 lg:w-8/12 m-auto">
-        <img
-          className="w-full h-48 object-cover object-center"
-          src={require("./img/lock.jpg")}
-          alt="Security lock"
-        />
-        <div className="w-full px-8 pt-8">
+      <div className="rounded overflow-hidden shadow-lg border-gray-400 border w-full md:w-10/12 lg:w-6/12 m-auto">
+        <div className="w-full px-8 pt-8 text-center">
           <h2 className="text-3xl mb-2">Password Generator</h2>
+          <p>Generate a secure, random passowrd</p>
         </div>
-        <div className="w-11/12 py-4 text-center border border-4 border-gray-400 text-2xl my-2 mx-auto">
+        <div className="passwordInput w-11/12 py-4 text-center border border-gray-200 text-2xl my-6 mx-auto cursor-pointer">
           <p className="vertical-middle">
             {(conditionals.specialChar ||
               conditionals.lowerLetters ||
@@ -87,9 +83,7 @@ function App() {
                     });
                   }}
                 />
-                <span className="align-top text-xl">
-                  &nbsp;&nbsp;Special Characters
-                </span>
+                <span className="align-top text-xl">&nbsp;&nbsp;Symbols</span>
               </li>
               <li>
                 <input
@@ -103,9 +97,7 @@ function App() {
                     });
                   }}
                 />
-                <span className="align-top text-xl">
-                  &nbsp;&nbsp;Upper case letters
-                </span>
+                <span className="align-top text-xl">&nbsp;&nbsp;Uppercase</span>
               </li>
               <li>
                 <input
@@ -119,9 +111,7 @@ function App() {
                     });
                   }}
                 />
-                <span className="align-top text-xl">
-                  &nbsp;&nbsp;Lower case letters
-                </span>
+                <span className="align-top text-xl">&nbsp;&nbsp;Lowercase</span>
               </li>
               <li>
                 <input
@@ -146,7 +136,7 @@ function App() {
               type="range"
               className="range-slider w-full"
               min="8"
-              max="50"
+              max="60"
               value={conditionals.length}
               onChange={(e) => {
                 setConditionals({
@@ -155,10 +145,29 @@ function App() {
                 });
               }}
             />
-            <span className="range-slider-value">{conditionals.length}</span>
             <br />
+            <br />
+            <input
+              type="number"
+              min="8"
+              max="60"
+              className="numberInput shadow appearance-none border border-gray-400 rounded w-19 py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+              value={conditionals.length}
+              onChange={(e) => {
+                let max = parseInt(e.target.max);
+                let value = parseInt(e.target.value);
+
+                if (value > max) {
+                  value = max;
+                }
+                setConditionals({
+                  ...conditionals,
+                  length: value,
+                });
+              }}
+            />
             <button
-              className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+              className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow float-right"
               onClick={() => {
                 randomPassword();
               }}
