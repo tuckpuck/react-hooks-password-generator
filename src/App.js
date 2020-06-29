@@ -10,6 +10,7 @@ function App() {
     length: 30,
   });
   const [password, setPassword] = useState("");
+  const [securityScore, setSecurityScore] = useState(0);
 
   useEffect(() => {
     console.log(
@@ -73,7 +74,7 @@ function App() {
       total += 10;
     }
     total += Number(conditionals.length);
-    console.log(total);
+    setSecurityScore(total);
   }
 
   return (
@@ -217,7 +218,7 @@ function App() {
                       />
                       <path
                         d="M150.003,85.849c-13.111,0-23.775,10.665-23.775,23.775v25.319h47.548v-25.319
-				C173.775,96.516,163.111,85.849,150.003,85.849z"
+                        C173.775,96.516,163.111,85.849,150.003,85.849z"
                       />
                       <path
                         d="M149.995,0.001C67.156,0.001,0,67.159,0,149.998c0,82.837,67.156,149.997,149.995,149.997s150-67.161,150-149.997
@@ -230,6 +231,7 @@ function App() {
                 </g>
               </svg>
             </span>
+            <span className="py-2 px-3">{securityScore}</span>
             <button
               className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow float-right"
               onClick={() => {
