@@ -73,6 +73,7 @@ function App() {
       total += 10;
     }
     total += Number(conditionals.length);
+    console.log(total);
   }
 
   return (
@@ -172,16 +173,25 @@ function App() {
             <br />
             <input
               type="number"
-              min="8"
+              min="1"
               max="60"
               className="numberInput shadow appearance-none border border-gray-400 rounded w-19 py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
               value={conditionals.length}
+              onBlur={(e) => {
+                setConditionals({
+                  ...conditionals,
+                  length: e.target.value || 30,
+                });
+              }}
               onChange={(e) => {
                 let max = parseInt(e.target.max);
+                let min = parseInt(e.target.min);
                 let value = parseInt(e.target.value);
-
                 if (value > max) {
                   value = max;
+                }
+                if (value < min) {
+                  value = min;
                 }
                 setConditionals({
                   ...conditionals,
