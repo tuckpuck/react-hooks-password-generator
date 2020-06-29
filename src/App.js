@@ -39,8 +39,9 @@ function App() {
       characters += "!@$%^&*()<div>,.?/[]{}-=_+";
     }
 
+    evaluatePasswordStrength(conditionals);
+
     let characterList = characters;
-    console.log(characterList);
     let password = "";
     for (let i = 0; i < length; ++i) {
       password += characterList[getRandomInt(0, characterList.length - 1)];
@@ -50,6 +51,28 @@ function App() {
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function evaluatePasswordStrength(conditionals) {
+    console.log(conditionals);
+    let total = 0;
+
+    if (conditionals.lowerLetters) {
+      total += 10;
+    }
+
+    if (conditionals.upperLetters) {
+      total += 10;
+    }
+
+    if (conditionals.numbers) {
+      total += 10;
+    }
+
+    if (conditionals.specialChar) {
+      total += 10;
+    }
+    total += Number(conditionals.length);
   }
 
   return (
@@ -170,7 +193,6 @@ function App() {
               <svg
                 className="fill-current text-green-500 inline-block h-6 w-6"
                 version="1.1"
-                id="Layer_1"
                 x="0px"
                 y="0px"
                 viewBox="0 0 299.995 299.995"
