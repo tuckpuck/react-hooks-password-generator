@@ -80,8 +80,8 @@ function App() {
 
   return (
     <div className="flex justify-center h-screen">
-      <div className="rounded overflow-hidden shadow-lg border-gray-400 border w-full md:w-10/12 lg:w-6/12 m-auto">
-        <div className="w-full px-8 pt-8 text-center">
+      <div className="rounded overflow-hidden shadow-lg border-gray-400 border w-full md:w-10/12 lg:w-6/12 m-auto p-8">
+        <div className="w-full px-8 pt-8 pb-4 text-center">
           <h2 className="text-3xl mb-2">Password Generator</h2>
           <p>Generate a secure, random passowrd</p>
         </div>
@@ -203,16 +203,20 @@ function App() {
             />
             <span className="py-2 px-3 ">
               <svg
-                className={`fill-current inline-block h-6 w-6 ${
-                  securityScore <= 50
-                    ? "text-red-700" // if
-                    : securityScore >= 50 && securityScore < 60
-                    ? "text-red-400" // else if
-                    : securityScore >= 60 && securityScore < 80
+                className={`fill-current inline-block h-8 w-8 ${
+                  securityScore < 50 // if
+                    ? "text-red-600"
+                    : securityScore >= 50 && securityScore < 55 // else if
+                    ? "text-red-500"
+                    : securityScore >= 55 && securityScore < 60 // else if
+                    ? "text-red-400"
+                    : securityScore >= 60 && securityScore < 70 // else if
+                    ? "text-green-400"
+                    : securityScore >= 70 && securityScore < 80 // else if
                     ? "text-green-500"
-                    : securityScore >= 80
+                    : securityScore >= 80 // else if
                     ? "text-green-600"
-                    : null
+                    : null // else
                 }`}
                 version="1.1"
                 x="0px"
