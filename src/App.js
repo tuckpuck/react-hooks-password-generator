@@ -94,7 +94,7 @@ function App() {
           </p>
         </div>
         <div className="flex">
-          <div className="w-full md:w-1/2 px-8 pt-4 pb-8">
+          <div className="w-full md:w-1/4 px-8 pt-4 pb-8">
             <ul>
               <li>
                 <input
@@ -154,7 +154,7 @@ function App() {
               </li>
             </ul>
           </div>
-          <div className="w-full md:w-1/2 px-8 pt-4 pb-8">
+          <div className="w-full md:w-3/4 px-8 pt-4 pb-8">
             <span className="align-top text-xl">Length</span>
             <br />
             <input
