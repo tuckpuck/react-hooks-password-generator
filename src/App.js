@@ -55,7 +55,6 @@ function App() {
   }
 
   function evaluatePasswordStrength(conditionals) {
-    console.log(conditionals);
     let total = 0;
 
     if (conditionals.lowerLetters) {
@@ -75,6 +74,8 @@ function App() {
     }
     total += Number(conditionals.length);
     setSecurityScore(total);
+    if (securityScore >= 55) {
+    }
   }
 
   return (
@@ -202,7 +203,17 @@ function App() {
             />
             <span className="py-2 px-3 ">
               <svg
-                className="fill-current text-green-500 inline-block h-6 w-6"
+                className={`fill-current inline-block h-6 w-6 ${
+                  securityScore <= 50
+                    ? "text-red-700" // if
+                    : securityScore >= 50 && securityScore < 60
+                    ? "text-red-400" // else if
+                    : securityScore >= 60 && securityScore < 80
+                    ? "text-green-500"
+                    : securityScore >= 80
+                    ? "text-green-600"
+                    : null
+                }`}
                 version="1.1"
                 x="0px"
                 y="0px"
