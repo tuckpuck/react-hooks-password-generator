@@ -155,53 +155,65 @@ function App() {
               </li>
             </ul>
           </div>
-          <div className="w-full md:w-3/4 px-8 pt-4 pb-8">
-            <span className="align-top text-xl">Length</span>
+
+          <div className="w-full md:w-3/4 px-8 pt-4 pb-8 float-right">
+            <span className="align-top text-xl mb-3">Length</span>
             <br />
-            <input
-              type="range"
-              className="range-slider w-full"
-              min="8"
-              max="60"
-              value={conditionals.length}
-              onChange={(e) => {
-                setConditionals({
-                  ...conditionals,
-                  length: e.target.value,
-                });
-              }}
-            />
+            <div className="lengthInputBox flex mt-3">
+              <input
+                type="number"
+                min="1"
+                max="60"
+                className="numberInput shadow appearance-none border border-gray-400 rounded w-19 py-2 px-3 mr-3 leading-tight focus:outline-none focus:shadow-outline"
+                value={conditionals.length}
+                onBlur={(e) => {
+                  setConditionals({
+                    ...conditionals,
+                    length: e.target.value || 30,
+                  });
+                }}
+                onChange={(e) => {
+                  let max = parseInt(e.target.max);
+                  let min = parseInt(e.target.min);
+                  let value = parseInt(e.target.value);
+                  if (value > max) {
+                    value = max;
+                  }
+                  if (value < min) {
+                    value = min;
+                  }
+                  setConditionals({
+                    ...conditionals,
+                    length: value,
+                  });
+                }}
+              />
+              <input
+                type="range"
+                className="range-slider flex-grow"
+                min="8"
+                max="60"
+                value={conditionals.length}
+                onChange={(e) => {
+                  setConditionals({
+                    ...conditionals,
+                    length: e.target.value,
+                  });
+                }}
+              />
+              <button
+                className="ml-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                onClick={() => {
+                  randomPassword();
+                }}
+              >
+                Generate
+              </button>
+            </div>
             <br />
             <br />
-            <input
-              type="number"
-              min="1"
-              max="60"
-              className="numberInput shadow appearance-none border border-gray-400 rounded w-19 py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-              value={conditionals.length}
-              onBlur={(e) => {
-                setConditionals({
-                  ...conditionals,
-                  length: e.target.value || 30,
-                });
-              }}
-              onChange={(e) => {
-                let max = parseInt(e.target.max);
-                let min = parseInt(e.target.min);
-                let value = parseInt(e.target.value);
-                if (value > max) {
-                  value = max;
-                }
-                if (value < min) {
-                  value = min;
-                }
-                setConditionals({
-                  ...conditionals,
-                  length: value,
-                });
-              }}
-            />
-            <span className="py-2 px-3 ">
+
+            <span className="py-2 px-3">
               <svg
                 className={`fill-current inline-block h-8 w-8 ${
                   securityScore < 50 // if
@@ -247,14 +259,6 @@ function App() {
               </svg>
             </span>
             <span className="py-2 px-3">{securityScore}</span>
-            <button
-              className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow float-right"
-              onClick={() => {
-                randomPassword();
-              }}
-            >
-              Generate
-            </button>
           </div>
         </div>
       </div>
