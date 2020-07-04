@@ -170,22 +170,9 @@ function App() {
         </div>
         <div className="flex">
           <div className="w-full md:w-1/4 px-8 pt-4 pb-8">
+            <span className="align-top text-sm mb-3 uppercase">Settings</span>
             <ul>
-              <li>
-                <input
-                  type="checkbox"
-                  checked={conditionals.specialChar}
-                  className="form-checkbox h-6 w-6"
-                  onChange={(e) => {
-                    setConditionals({
-                      ...conditionals,
-                      specialChar: !conditionals.specialChar,
-                    });
-                  }}
-                />
-                <span className="align-top text-xl">&nbsp;&nbsp;Symbols</span>
-              </li>
-              <li>
+              <li className="mt-2">
                 <input
                   type="checkbox"
                   checked={conditionals.upperLetters}
@@ -199,7 +186,7 @@ function App() {
                 />
                 <span className="align-top text-xl">&nbsp;&nbsp;Uppercase</span>
               </li>
-              <li>
+              <li className="">
                 <input
                   type="checkbox"
                   checked={conditionals.lowerLetters}
@@ -213,7 +200,26 @@ function App() {
                 />
                 <span className="align-top text-xl">&nbsp;&nbsp;Lowercase</span>
               </li>
-              <li>
+            </ul>
+          </div>
+          <div className="w-full md:w-1/4 px-8 pt-4 pb-8">
+            <span className="align-top text-sm mb-3 uppercase">&nbsp;</span>
+            <ul>
+              <li className="mt-2">
+                <input
+                  type="checkbox"
+                  checked={conditionals.specialChar}
+                  className="form-checkbox h-6 w-6"
+                  onChange={(e) => {
+                    setConditionals({
+                      ...conditionals,
+                      specialChar: !conditionals.specialChar,
+                    });
+                  }}
+                />
+                <span className="align-top text-xl">&nbsp;&nbsp;Symbols</span>
+              </li>
+              <li className="">
                 <input
                   type="checkbox"
                   checked={conditionals.numbers}
@@ -230,15 +236,16 @@ function App() {
             </ul>
           </div>
 
-          <div className="w-full md:w-3/4 px-8 pt-4 pb-8">
-            <span className="align-top text-xl mb-3">Length</span>
+          <div className="w-full md:w-2/4 px-8 pt-4 pb-8">
+            <span className="align-top text-sm mb-3 uppercase">Length</span>
             <br />
-            <div className="lengthInputBox flex mt-3">
+
+            <div className="lengthInputBox flex mt-2">
               <input
                 type="number"
                 min="1"
                 max="60"
-                className="numberInput shadow appearance-none border border-gray-400 rounded w-19 py-2 px-3 mr-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="numberInput shadow appearance-none border border-gray-400 rounded w-19 py-4 px-3 mr-3 leading-tight focus:outline-none focus:shadow-outline text-xl"
                 value={conditionals.length}
                 onBlur={(e) => {
                   setConditionals({
@@ -275,18 +282,18 @@ function App() {
                   });
                 }}
               />
-              <button
-                className="ml-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-                onClick={() => {
-                  randomPassword();
-                }}
-              >
-                Generate
-              </button>
             </div>
-            <br />
-            <br />
           </div>
+        </div>
+        <div className="w-11/12 py-4 text-center my-2 mx-auto relative">
+          <button
+            className="ml-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-full"
+            onClick={() => {
+              randomPassword();
+            }}
+          >
+            Generate Password
+          </button>
         </div>
       </div>
     </div>
