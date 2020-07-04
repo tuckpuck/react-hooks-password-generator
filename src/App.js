@@ -12,12 +12,6 @@ function App() {
   const [password, setPassword] = useState("");
   const [securityScore, setSecurityScore] = useState(0);
 
-  useEffect(() => {
-    console.log(
-      `specialChar:${conditionals.specialChar}, lowerLetters:${conditionals.lowerLetters},upperLetters:${conditionals.upperLetters}, numbers:${conditionals.numbers}`
-    );
-  }, [conditionals]);
-
   useEffect(() => randomPassword(), [conditionals]);
 
   const randomPassword = () => {
@@ -37,7 +31,7 @@ function App() {
     }
 
     if (conditionals.specialChar) {
-      characters += "!@$%^&*()<div>,.?/[]{}-=_+";
+      characters += "!@$%^&*()<>,.?/[]{}-=_+";
     }
 
     evaluatePasswordStrength(conditionals);
@@ -132,13 +126,40 @@ function App() {
                 </g>
               </svg>
             </span>
-            <p className="vertical-middle inline-block">
-              {(conditionals.specialChar ||
-                conditionals.lowerLetters ||
-                conditionals.upperLetters ||
-                conditionals.numbers) &&
-                password && <span>{password}</span>}
-            </p>
+            {(conditionals.specialChar ||
+              conditionals.lowerLetters ||
+              conditionals.upperLetters ||
+              conditionals.numbers) &&
+              password && (
+                <input
+                  type="text"
+                  className="passwordDisplay vertical-middle inline-block"
+                  onChange={() => {
+                    randomPassword();
+                  }}
+                  readOnly
+                  disabled
+                  value={password}
+                />
+              )}
+            <span className="mr-4 absolute right-0 w-10 h-10">
+              <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+                <g id="Copy">
+                  <path
+                    d="M18.5,21H9.1a.5.5,0,1,1,0-1h9.4a.5.5,0,0,0,.5-.5V7.5a.5.5,0,0,0-.5-.5H8.5a.5.5,0,0,0-.5.5v12a.5.5,0,0,1-1,0V7.5A1.5,1.5,0,0,1,8.5,6h10A1.5,1.5,0,0,1,20,7.5v12A1.5,1.5,0,0,1,18.5,21Z"
+                    style={{ fill: "#2b3344" }}
+                  />
+                  <path
+                    d="M17.5,5a.5.5,0,0,1-.35-.851.361.361,0,0,1,.16-.109.5.5,0,0,1,.54.109.485.485,0,0,1,0,.7.372.372,0,0,1-.16.11A.406.406,0,0,1,17.5,5Z"
+                    style={{ fill: "#2b3344" }}
+                  />
+                  <path
+                    d="M5.5,19a.5.5,0,0,1-.5-.5V5.5A1.5,1.5,0,0,1,6.5,4h9.156a.5.5,0,0,1,0,1H6.5a.5.5,0,0,0-.5.5v13A.5.5,0,0,1,5.5,19Z"
+                    style={{ fill: "#2b3344" }}
+                  />
+                </g>
+              </svg>
+            </span>
           </div>
         </div>
         <div className="flex">

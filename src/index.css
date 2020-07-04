@@ -23,3 +23,8 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.passwordDisplay {
+  width: 80%;
+  text-align: center;
+}
