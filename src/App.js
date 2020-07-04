@@ -81,7 +81,7 @@ function App() {
         </div>
         <div className="passwordInputContainer">
           <div className="passwordInput w-11/12 py-4 text-center border border-gray-200 text-2xl my-6 mx-auto cursor-pointer relative">
-            <span className="ml-4 absolute left-0">
+            <span className="ml-4 absolute left-0 securityContainer">
               <svg
                 className={`fill-current inline-block h-8 w-8 vertical-middle ${
                   securityScore < 50 // if
@@ -131,19 +131,25 @@ function App() {
               conditionals.upperLetters ||
               conditionals.numbers) &&
               password && (
-                <input
-                  type="text"
-                  className="passwordDisplay vertical-middle inline-block"
-                  onChange={() => {
-                    randomPassword();
-                  }}
-                  readOnly
-                  disabled
-                  value={password}
-                />
+                <div className="passwordDisplayContainer">
+                  <input
+                    type="text"
+                    className="passwordDisplay vertical-middle inline-block"
+                    onChange={() => {
+                      randomPassword();
+                    }}
+                    readOnly
+                    disabled
+                    value={password}
+                  />
+                </div>
               )}
-            <span className="mr-4 absolute right-0 w-10 h-10">
-              <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+            <span className="mr-4 absolute right-0 w-10 h-10 copyContainer">
+              <svg
+                className="vertical-middle fill-current inline-block"
+                viewBox="0 0 25 25"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <g id="Copy">
                   <path
                     d="M18.5,21H9.1a.5.5,0,1,1,0-1h9.4a.5.5,0,0,0,.5-.5V7.5a.5.5,0,0,0-.5-.5H8.5a.5.5,0,0,0-.5.5v12a.5.5,0,0,1-1,0V7.5A1.5,1.5,0,0,1,8.5,6h10A1.5,1.5,0,0,1,20,7.5v12A1.5,1.5,0,0,1,18.5,21Z"
