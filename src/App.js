@@ -287,7 +287,7 @@ function App() {
         </div>
         <div className="w-11/12 py-4 text-center my-2 mx-auto relative">
           <button
-            className="ml-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-full"
+            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-full"
             onClick={() => {
               randomPassword();
             }}
