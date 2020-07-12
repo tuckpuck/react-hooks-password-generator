@@ -12,7 +12,7 @@ function App() {
     length: 30,
   });
   const [password, setPassword] = useState("");
-  const [securityScore, setSecurityScore] = useState(0);
+  const [securityScore, setSecurityScore] = useState(70);
   const clipboard = useClipboard();
 
   useEffect(() => randomPassword(), [conditionals]);
@@ -299,7 +299,6 @@ function App() {
             className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-full"
             onClick={() => {
               randomPassword();
-              console.log(securityScore);
             }}
           >
             Generate Password
