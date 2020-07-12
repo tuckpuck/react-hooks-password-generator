@@ -51,4 +51,9 @@ input[type="number"] {
 
 .securityContainer {
   top: 13px;
+  margin-left: 1.1rem;
+}
+
+.securityScoreSVG {
+  transition: color 0.25s ease;
 }
