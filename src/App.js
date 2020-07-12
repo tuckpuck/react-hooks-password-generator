@@ -89,19 +89,17 @@ function App() {
           >
             <span className="ml-4 absolute left-0 securityContainer">
               <svg
-                className={`fill-current inline-block h-8 w-8 vertical-middle ${
+                className={`fill-current inline-block h-6 w-6 vertical-middle securityScoreSVG ${
                   securityScore < 50 // if
                     ? "text-red-600"
                     : securityScore >= 50 && securityScore < 55 // else if
                     ? "text-red-500"
                     : securityScore >= 55 && securityScore < 60 // else if
-                    ? "text-red-400"
-                    : securityScore >= 60 && securityScore < 70 // else if
-                    ? "text-green-400"
-                    : securityScore >= 70 && securityScore < 80 // else if
+                    ? "text-orange-500"
+                    : securityScore >= 60 && securityScore < 65 // else if
+                    ? "text-yellow-500"
+                    : securityScore >= 65 //else
                     ? "text-green-500"
-                    : securityScore >= 80 // else if
-                    ? "text-green-600"
                     : null // else
                 }`}
                 version="1.1"
@@ -301,6 +299,7 @@ function App() {
             className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-full"
             onClick={() => {
               randomPassword();
+              console.log(securityScore);
             }}
           >
             Generate Password
