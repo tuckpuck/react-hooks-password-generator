@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "gatsby-cli": "^2.12.58",
     "react": "^16.13.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "tailwindcss": "^1.4.6"
