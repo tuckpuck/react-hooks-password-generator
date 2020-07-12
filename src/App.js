@@ -13,6 +13,7 @@ function App() {
   });
   const [password, setPassword] = useState(" ");
   const [securityScore, setSecurityScore] = useState(70);
+  const [copyNotify, setCopyNotify] = useState(false);
   const clipboard = useClipboard();
 
   useEffect(() => randomPassword(), [conditionals]);
@@ -75,6 +76,11 @@ function App() {
     }
   }
 
+  function copyToClipboard() {
+    clipboard.copy();
+    setCopyNotify(true);
+  }
+
   return (
     <div className="flex justify-center h-screen">
       <div className="rounded overflow-hidden shadow-lg border-gray-400 border w-full md:w-10/12 lg:w-6/12 m-auto p-8">
@@ -83,9 +89,14 @@ function App() {
           <p>Generate a secure, random password</p>
         </div>
         <div className="passwordInputContainer">
+          <div className="w-11/12 mx-auto">
+            <span className={`copyNotification ${copyNotify ? "" : "hidden"}`}>
+              Copied!
+            </span>
+          </div>
           <div
             className="passwordInput w-11/12 py-4 text-center border border-gray-200 text-2xl my-6 mx-auto cursor-pointer relative"
-            onClick={clipboard.copy}
+            onClick={copyToClipboard}
           >
             <span className="ml-4 absolute left-0 securityContainer">
               <svg
@@ -140,7 +151,7 @@ function App() {
                     ref={clipboard.target}
                     type="text"
                     className="passwordDisplay vertical-middle inline-block cursor-pointer"
-                    onClick={clipboard.copy}
+                    onClick={copyToClipboard}
                     onChange={() => {
                       randomPassword();
                     }}
@@ -152,7 +163,7 @@ function App() {
               )}
             <span
               className="mr-4 absolute right-0 w-10 h-10 copyContainer"
-              onClick={clipboard.copy}
+              onClick={copyToClipboard}
             >
               <svg
                 className="vertical-middle fill-current inline-block"

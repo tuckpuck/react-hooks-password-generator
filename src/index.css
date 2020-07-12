@@ -46,6 +46,12 @@ input[type="number"] {
   min-height: 36px;
 }
 
+.copyNotification {
+  float: right;
+  margin-top: -25px;
+  margin-right: 8px;
+}
+
 .copyContainer {
   top: 12px;
 }
