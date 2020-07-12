@@ -43,6 +43,7 @@ input[type="number"] {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgb(2, 0, 36);
+  min-height: 36px;
 }
 
 .copyContainer {

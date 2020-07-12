@@ -11,7 +11,7 @@ function App() {
     numbers: true,
     length: 30,
   });
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(" ");
   const [securityScore, setSecurityScore] = useState(70);
   const clipboard = useClipboard();
 
