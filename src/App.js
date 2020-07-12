@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useClipboard } from "use-clipboard-copy";
+
 import "./styles/App.css";
 
 function App() {
@@ -11,6 +13,7 @@ function App() {
   });
   const [password, setPassword] = useState("");
   const [securityScore, setSecurityScore] = useState(0);
+  const clipboard = useClipboard();
 
   useEffect(() => randomPassword(), [conditionals]);
 
@@ -80,7 +83,10 @@ function App() {
           <p>Generate a secure, random password</p>
         </div>
         <div className="passwordInputContainer">
-          <div className="passwordInput w-11/12 py-4 text-center border border-gray-200 text-2xl my-6 mx-auto cursor-pointer relative">
+          <div
+            className="passwordInput w-11/12 py-4 text-center border border-gray-200 text-2xl my-6 mx-auto cursor-pointer relative"
+            onClick={clipboard.copy}
+          >
             <span className="ml-4 absolute left-0 securityContainer">
               <svg
                 className={`fill-current inline-block h-8 w-8 vertical-middle ${
@@ -133,8 +139,10 @@ function App() {
               password && (
                 <div className="passwordDisplayContainer">
                   <input
+                    ref={clipboard.target}
                     type="text"
-                    className="passwordDisplay vertical-middle inline-block"
+                    className="passwordDisplay vertical-middle inline-block cursor-pointer"
+                    onClick={clipboard.copy}
                     onChange={() => {
                       randomPassword();
                     }}
@@ -144,7 +152,10 @@ function App() {
                   />
                 </div>
               )}
-            <span className="mr-4 absolute right-0 w-10 h-10 copyContainer">
+            <span
+              className="mr-4 absolute right-0 w-10 h-10 copyContainer"
+              onClick={clipboard.copy}
+            >
               <svg
                 className="vertical-middle fill-current inline-block"
                 viewBox="0 0 25 25"
