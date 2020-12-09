@@ -30,6 +30,10 @@ input[type="number"] {
   margin: 0 auto;
 }
 
+.passwordInput {
+  min-height: 70px;
+}
+
 .passwordDisplay {
   width: 100%;
   text-align: center;
