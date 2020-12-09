@@ -83,7 +83,7 @@ function App() {
 
   return (
     <div className="flex justify-center h-screen">
-      <div className="rounded overflow-hidden shadow-lg border-gray-400 border w-full md:w-10/12 lg:w-6/12 m-auto p-8">
+      <div className="rounded overflow-hidden shadow-lg border-gray-400 border w-full md:w-10/12 lg:w-7/12 m-auto p-8">
         <div className="w-full px-8 pt-8 pb-4 text-center">
           <h2 className="text-3xl bold mb-2">Password Generator</h2>
           <p>Generate a secure, random password</p>
