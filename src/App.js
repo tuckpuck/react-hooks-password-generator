@@ -18,6 +18,13 @@ function App() {
 
   useEffect(() => randomPassword(), [conditionals]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCopyNotify(false);
+    }, 900);
+    return () => clearTimeout(timer);
+  }, [copyNotify]);
+
   const randomPassword = () => {
     let characters = "";
     let length = conditionals.length;
@@ -90,7 +97,11 @@ function App() {
         </div>
         <div className="passwordInputContainer">
           <div className="w-11/12 mx-auto">
-            <span className={`copyNotification ${copyNotify ? "" : "hidden"}`}>
+            <span
+              className={`copyNotification ${
+                copyNotify ? "copyNotificationShow" : "copyNotificationHide"
+              }`}
+            >
               Copied!
             </span>
           </div>
